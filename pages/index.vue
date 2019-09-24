@@ -1,73 +1,149 @@
 <template>
-  <div class="container">
-    <div>
-      <logo />
-      <h1 class="title">
-        vladivodico-presentation
-      </h1>
-      <h2 class="subtitle">
-        The presentation website of Vladivodico application
-      </h2>
-      <div class="links">
-        <a href="https://nuxtjs.org/" target="_blank" class="button--green">
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
-    </div>
-  </div>
+    <section class="page__presentation">
+        <div class="icon__container">
+            <book-icon />
+        </div>
+
+        <h1 class="page__presentation__title">Vladivodico</h1>
+
+        <h2 class="page__presentation__subtitle">Votre compagnon de lecture</h2>
+        <article class="page__presentation__description">
+            <p>
+                Vladivodico vous permet de garder note des locutions que vous
+                découvrez au fil de vos lectures.
+            </p>
+            <p>
+                Une fois connecté, vos notes seront automatiquement
+                synchronisées entre vos différents appareils 🎉.
+            </p>
+        </article>
+
+        <aside class="page__presentation__functionalities__container">
+            <figure
+                v-for="({ component, legend }, i) in functionalities"
+                :key="i"
+                class="page__presentation__functionality"
+            >
+                <header>
+                    <div>
+                        <component :is="component" size="20" />
+                    </div>
+                </header>
+
+                <figcaption>{{ legend }}</figcaption>
+            </figure>
+        </aside>
+    </section>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
+import { RefreshCcwIcon, WifiOffIcon, EditIcon } from 'vue-feather-icons'
+
+import BookIcon from '~/components/BookIcon'
 
 export default {
-  components: {
-    Logo
-  }
+    name: 'IndexPage',
+    components: {
+        BookIcon,
+        RefreshCcwIcon,
+        WifiOffIcon,
+        EditIcon
+    },
+    data() {
+        return {
+            functionalities: [
+                {
+                    component: 'RefreshCcwIcon',
+                    legend: 'Synchronisation automatique'
+                },
+                {
+                    component: 'WifiOffIcon',
+                    legend: 'Support hors-ligne'
+                },
+                {
+                    component: 'EditIcon',
+                    legend: 'Editeur de texte adapté'
+                }
+            ]
+        }
+    }
 }
 </script>
 
-<style>
-/* Sample `apply` at-rules with Tailwind CSS
-.container {
-  @apply min-h-screen flex justify-center items-center text-center mx-auto;
-}
-*/
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
+<style lang="scss" scoped>
+.page__presentation {
+    @apply mx-auto mt-6;
 
-.title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
+    display: grid;
+    width: 70vw;
 
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: 1fr auto auto;
 
-.links {
-  padding-top: 15px;
+    .icon__container {
+        @apply relative flex justify-end items-end;
+
+        grid-column: 1 / span 2;
+        grid-row: 1 / span 3;
+
+        svg {
+            @apply w-full h-full max-w-xs fill-current text-red-400;
+        }
+    }
+
+    h1.page__presentation__title {
+        @apply relative text-2xl font-semibold text-right text-red-800;
+
+        font-family: 'Mansalva', cursive;
+
+        grid-row: 1 / span 3;
+        grid-column: 3;
+        left: -8px;
+
+        writing-mode: vertical-lr;
+    }
+
+    h2.page__presentation__subtitle {
+        @apply flex items-center text-2xl;
+
+        font-family: 'Cousine', serif;
+
+        grid-column: 4 / span 3;
+        grid-row: 1;
+    }
+
+    article.page__presentation__description {
+        grid-column: 4 / span 3;
+        grid-row: 2;
+    }
+
+    aside.page__presentation__functionalities__container {
+        @apply pt-4;
+
+        grid-column: 4 / span 3;
+        grid-row: 3;
+
+        display: grid;
+
+        grid-template-columns: repeat(3, 1fr);
+
+        .page__presentation__functionality {
+            display: grid;
+
+            grid-template-rows: repeat(2, 50%);
+
+            header {
+                @apply flex justify-center items-center;
+
+                & > div {
+                    @apply p-3 rounded-full text-white bg-red-500;
+                }
+            }
+
+            figcaption {
+                @apply flex justify-center items-start text-center text-gray-700 text-sm pt-2;
+            }
+        }
+    }
 }
 </style>
