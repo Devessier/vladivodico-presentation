@@ -14,7 +14,7 @@ export default {
             default: false
         }
     },
-    render(h, { scopedSlots, props, data }) {
+    render(h, { scopedSlots, props, data, listeners }) {
         const tag = props.to === undefined ? 'button' : 'nuxt-link'
 
         return h(
@@ -25,7 +25,8 @@ export default {
                 class: {
                     btn__primary: props.primary,
                     ...data.class
-                }
+                },
+                nativeOn: listeners
             },
             scopedSlots.default()
         )

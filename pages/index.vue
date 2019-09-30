@@ -72,27 +72,49 @@ export default {
 
 <style lang="scss" scoped>
 .page__presentation {
-    @apply mx-auto mt-6;
+    @apply mx-auto;
+
+    width: 95vw;
 
     display: grid;
-    width: 70vw;
 
-    grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: 1fr auto auto;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 1fr 1fr 1fr;
+
+    @screen sm {
+        width: 85vw;
+    }
+
+    @screen md {
+        @apply mt-6;
+
+        width: 70vw;
+
+        grid-template-columns: repeat(6, 1fr);
+        grid-template-rows: 1fr auto auto;
+    }
 
     .icon__container {
-        @apply relative flex justify-end items-end;
+        @apply hidden relative justify-end items-end;
 
         grid-column: 1 / span 2;
         grid-row: 1 / span 3;
 
+        @screen md {
+            @apply flex;
+        }
+
         svg {
-            @apply w-full h-full max-w-xs fill-current text-red-400;
+            @apply w-full h-auto max-w-xs fill-current text-red-400;
         }
     }
 
     h1.page__presentation__title {
-        @apply relative text-2xl font-semibold text-right text-red-800;
+        @apply hidden relative text-2xl font-semibold text-right text-red-800;
+
+        @screen md {
+            @apply block;
+        }
 
         font-family: 'Mansalva', cursive;
 
@@ -108,20 +130,32 @@ export default {
 
         font-family: 'Cousine', serif;
 
-        grid-column: 4 / span 3;
+        grid-column: 1 / span 3;
         grid-row: 1;
+
+        @screen md {
+            grid-column: 4 / span 3;
+        }
     }
 
     article.page__presentation__description {
-        grid-column: 4 / span 3;
+        grid-column: 1 / span 3;
         grid-row: 2;
+
+        @screen md {
+            grid-column: 4 / span 3;
+        }
     }
 
     aside.page__presentation__functionalities__container {
         @apply pt-4;
 
-        grid-column: 4 / span 3;
+        grid-column: 1 / span 3;
         grid-row: 3;
+
+        @screen md {
+            grid-column: 4 / span 3;
+        }
 
         display: grid;
 
@@ -130,7 +164,7 @@ export default {
         .page__presentation__functionality {
             display: grid;
 
-            grid-template-rows: repeat(2, 50%);
+            grid-template-rows: repeat(2, 1fr);
 
             header {
                 @apply flex justify-center items-center;

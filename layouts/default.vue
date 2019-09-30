@@ -29,6 +29,6 @@ body {
 
 <style scoped>
 .app-container {
-    @apply bg-orange-200;
+    @apply bg-orange-200 min-h-screen overflow-hidden;
 }
 </style>
