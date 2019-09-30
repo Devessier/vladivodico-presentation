@@ -98,7 +98,7 @@ header.app-navbar {
         }
 
         @screen md {
-            @apply static w-auto block opacity-100;
+            @apply static w-auto block opacity-100 text-lg;
 
             transform: translateY(0) scale(1);
         }
