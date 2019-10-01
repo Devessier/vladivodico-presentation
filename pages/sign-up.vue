@@ -1,18 +1,21 @@
 <template>
-    <section class="page__sign-up">
-        <h1>Inscription</h1>
-
-        <formulary :fields="fields" @input="input" />
-    </section>
+    <sign-on :fields="fields" @input="input" @submit="submit">
+        <template #header>
+            Inscription
+        </template>
+    </sign-on>
 </template>
 
 <script>
-import Formulary from '~/components/Formulary.vue'
+import SignOn from '~/components/SignOn.vue'
 
 export default {
     name: 'SignUpPage',
     components: {
-        Formulary
+        SignOn
+    },
+    head: {
+        title: 'Inscription'
     },
     data() {
         return {
@@ -37,7 +40,8 @@ export default {
                     value: '',
                     name: 'new-password',
                     autocomplete: 'new-password',
-                    type: 'password'
+                    type: 'password',
+                    seeable: true
                 }
             ]
         }
@@ -46,30 +50,10 @@ export default {
         input(i, value) {
             console.log('input =', i, value)
             this.fields[i].value = value
+        },
+        submit() {
+            console.log('go ! submit !')
         }
     }
 }
 </script>
-
-<style lang="scss" scoped>
-section.page__sign-up {
-    @apply w-full flex flex-col items-center mt-2 mx-auto;
-
-    @screen sm {
-        @apply mt-4 w-4/5;
-    }
-
-    @screen md {
-        @apply mt-6 w-1/2;
-    }
-
-    > h1 {
-        @apply text-3xl mb-6;
-
-        font-family: 'Mansalva', cursive;
-    }
-
-    form.page__sign-up__form {
-    }
-}
-</style>

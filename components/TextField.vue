@@ -19,7 +19,7 @@
 
             <aside class="vladivodico__input__buttons-container">
                 <button
-                    v-if="type === 'password'"
+                    v-if="type === 'password' && seeable === true"
                     @click="showPassword = !showPassword"
                 >
                     <eye-icon v-if="!showPassword" />
@@ -27,7 +27,7 @@
                 </button>
 
                 <button v-if="closable" @click="$emit('input', '')">
-                    <x-circle-icon />
+                    <x-icon />
                 </button>
             </aside>
         </div>
@@ -47,12 +47,12 @@
 </template>
 
 <script>
-import { XCircleIcon, EyeIcon, EyeOffIcon } from 'vue-feather-icons'
+import { XIcon, EyeIcon, EyeOffIcon } from 'vue-feather-icons'
 
 export default {
     name: 'TextField',
     components: {
-        XCircleIcon,
+        XIcon,
         EyeIcon,
         EyeOffIcon
     },
@@ -84,6 +84,10 @@ export default {
         type: {
             type: String,
             default: 'text'
+        },
+        seeable: {
+            type: Boolean,
+            default: false
         }
     },
     data() {
@@ -114,7 +118,7 @@ export default {
     }
 
     .vladivodico__input__main {
-        @apply flex justify-end items-center border-b-2 border-orange-400 py-2;
+        @apply flex justify-end items-center border-b-2 border-gray-600 py-2;
 
         transition: border-color 200ms;
 
@@ -124,7 +128,7 @@ export default {
         }
 
         &.focus {
-            @apply border-orange-500;
+            @apply border-gray-800;
         }
 
         > input {
