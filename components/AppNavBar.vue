@@ -67,7 +67,7 @@ header.app-navbar {
     }
 
     .screen-background__mobile {
-        @apply absolute right-0 w-16 h-16 rounded-full bg-red-700 opacity-0 z-20;
+        @apply absolute right-0 w-16 h-16 rounded-full bg-red-500 opacity-0 z-20;
 
         transition: all 300ms ease;
 
