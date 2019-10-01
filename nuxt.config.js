@@ -36,7 +36,7 @@ module.exports = {
             {
                 rel: 'stylesheet',
                 href:
-                    'https://fonts.googleapis.com/css?family=Cousine:700|Lato|Mansalva&display=swap'
+                    'https://fonts.googleapis.com/css?family=Cousine:700|Lato:400,700|Mansalva&display=swap'
             }
         ]
     },
