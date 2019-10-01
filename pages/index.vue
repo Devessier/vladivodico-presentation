@@ -66,6 +66,9 @@ export default {
                 }
             ]
         }
+    },
+    head: {
+        title: 'Accueil'
     }
 }
 </script>

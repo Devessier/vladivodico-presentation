@@ -1,10 +1,14 @@
+const title =
+    'Vladivodico est votre nouveau compagnon de lecture. Son application web fonctionnant même sans connexion vous aide à retenir les mots nouveaux que vous découvrez au fil de vos lectures.'
+
 module.exports = {
-    mode: 'spa',
+    mode: 'universal',
     /*
      ** Headers of the page
      */
     head: {
-        title: process.env.npm_package_name || '',
+        title: 'Votre compagon de lecture',
+        titleTemplate: 'Vladivodico - %s',
         meta: [
             { charset: 'utf-8' },
             {
@@ -14,7 +18,17 @@ module.exports = {
             {
                 hid: 'description',
                 name: 'description',
-                content: process.env.npm_package_description || ''
+                content: title
+            },
+            {
+                hid: 'theme-color',
+                name: 'theme-color',
+                content: '#FEEBC8'
+            },
+            {
+                hid: 'og:description',
+                name: 'og:description',
+                content: title
             }
         ],
         link: [
