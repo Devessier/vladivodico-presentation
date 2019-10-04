@@ -31,19 +31,12 @@ module.exports = {
                 content: title
             }
         ],
-        link: [
-            { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-            {
-                rel: 'preconnect',
-                href: 'https://fonts.gstatic.com',
-                crossorigin: true
-            },
-            {
-                rel: 'stylesheet',
-                href:
-                    'https://fonts.googleapis.com/css?family=Cousine:700|Lato:400,700|Mansalva&display=swap'
-            }
-        ]
+        link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
+    },
+    webfontloader: {
+        google: {
+            families: ['Cousine:700', 'Lato:400,700', 'Mansalva']
+        }
     },
     /*
      ** Customize the progress-bar color
@@ -69,7 +62,7 @@ module.exports = {
     /*
      ** Nuxt.js modules
      */
-    modules: ['@nuxtjs/pwa'],
+    modules: ['@nuxtjs/pwa', 'nuxt-webfontloader'],
     /*
      ** Build configuration
      */
