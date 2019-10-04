@@ -34,8 +34,13 @@ module.exports = {
         link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
     },
     webfontloader: {
-        google: {
-            families: ['Cousine:700', 'Lato:400,700', 'Mansalva']
+        custom: {
+            families: ['Cousine:n7', 'Lato:n4,n7', 'Mansalva'],
+            urls: [
+                'https://fonts.googleapis.com/css?family=Cousine:700&display=swap',
+                'https://fonts.googleapis.com/css?family=Lato:400,700&display=swap',
+                'https://fonts.googleapis.com/css?family=Mansalva&display=swap'
+            ]
         }
     },
     /*
